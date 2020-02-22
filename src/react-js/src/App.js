@@ -19,11 +19,11 @@ const alignments = {
 }
 
 const transformRequest = (url) => {
-    const hasQuery = url.indexOf("?") !== -1;	  
-    const suffix = hasQuery ? "&pluginName=journalismScrollytelling" : "?pluginName=journalismScrollytelling";	  
+    const hasQuery = url.indexOf("?") !== -1;
+    const suffix = hasQuery ? "&pluginName=journalismScrollytelling" : "?pluginName=journalismScrollytelling";
     return {
       url: url + suffix
-    }	  
+    }
 }
 
 class App extends Component {
@@ -125,7 +125,7 @@ class App extends Component {
                     }
                     <div id="features" className={alignments[config.alignment]}>
                         {
-                            config.chapters.map(chapter => 
+                            config.chapters.map(chapter =>
                                 <Chapter key={chapter.id} theme={theme} {...chapter} currentChapterID={currentChapterID}/>
                             )
                         }
@@ -142,19 +142,40 @@ class App extends Component {
 
 }
 
-function Chapter({id, theme, title, image, description, currentChapterID}) {
+function Chapter({id, theme, title, role, dates, description, description2, description3, description4, description5, description6, description7, currentChapterID}) {
     const classList = id === currentChapterID ? "step active" : "step";
     return (
         <div id={id} className={classList}>
             <div className={theme}>
                 { title &&
-                    <h3 className="title">{title}</h3>
+                    <h2 className="title">{title}</h2>
                 }
-                { image &&
-                    <img src={image} alt={title}></img>
+                { role &&
+                    <h4 className="role">{role}</h4>
+                }
+                { dates &&
+                    <h5 className="dates">{dates}</h5>
                 }
                 { description &&
-                    <p>{description}</p>
+                    <ul>{description}</ul>
+                }
+                { description2 &&
+                    <ul>{description2}</ul>
+                }
+                { description3 &&
+                    <ul>{description3}</ul>
+                }
+                { description4 &&
+                    <ul>{description4}</ul>
+                }
+                { description5 &&
+                    <ul>{description5}</ul>
+                }
+                { description6 &&
+                    <ul>{description6}</ul>
+                }
+                { description7 &&
+                    <ul>{description7}</ul>
                 }
             </div>
         </div>
